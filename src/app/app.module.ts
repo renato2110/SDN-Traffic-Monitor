@@ -6,13 +6,13 @@ import {HttpModule} from '@angular/http';
 import { StatisticsService } from './services/statistics.service';
 
 import { AppComponent } from './app.component';
-import { ExampleComponent } from './components/example/example.component';
+import { MacIpComponent } from './components/mac-ip/mac-ip.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExampleComponent
+    MacIpComponent
   ],
   imports: [
     BrowserModule,	

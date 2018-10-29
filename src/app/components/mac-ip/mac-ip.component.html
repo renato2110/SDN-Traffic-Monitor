@@ -1,0 +1,16 @@
+<div class="container">          
+  <table *ngIf="data" class="table table-striped">
+    <!-- ADD HEADERS -->
+    <tr>
+      <th>MAC ADDRESS</th>
+      <th>IP ADDRESS</th>
+    </tr>
+
+    <!-- BIND ARRAY TO TABLE -->
+    <tr *ngFor="let element of data">
+      <td>{{element.mac}}</td>
+      <td>{{element.ip}}</td>
+    </tr>
+  </table>
+  <p *ngIf="!data">NO HAY DATOS DISPONIBLES</p>
+</div>
