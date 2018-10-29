@@ -7,12 +7,16 @@ import { StatisticsService } from './services/statistics.service';
 
 import { AppComponent } from './app.component';
 import { MacIpComponent } from './components/mac-ip/mac-ip.component';
+import { WebComponent } from './components/web/web.component';
+import { DnsComponent } from './components/dns/dns.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MacIpComponent
+    MacIpComponent,
+    WebComponent,
+    DnsComponent
   ],
   imports: [
     BrowserModule,	
