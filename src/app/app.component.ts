@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Network Traffic Controller';
-  subtitle = 'For Ryu SDN Controller';
+  subtitle = 'By Northbound Developers';
 }

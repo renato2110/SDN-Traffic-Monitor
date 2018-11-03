@@ -6,11 +6,7 @@ h1, h2, h6 {
 .card-body, h1, h2 {
     text-align: center;
 }
-/*
-.card-body {
-    background-color: #fff0a0;
-}
-*/
+
 .card-header {
     background-color: white;
 }
@@ -19,4 +15,8 @@ h1, h2, h6 {
     padding-top: 30px;
     width: 97%;
     margin: auto;
+}
+
+#ryu-logo{
+  width: 70px;
 }

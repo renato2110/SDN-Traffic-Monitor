@@ -4,7 +4,7 @@
     {{ title }}
   </h1>
   <h6>
-      <img width="70" alt="Ryu Logo" src="../favicon.ico"> 
+      <img id="ryu-logo" alt="Ryu Logo" src="../favicon.ico">
       {{ subtitle }}</h6>
 </div>
 
@@ -26,7 +26,6 @@
     </div>
     <div id="statistic-two">
       <div class="card-body">
-        <app-dns></app-dns>
       </div>
     </div>
   </div>
@@ -47,17 +46,10 @@
       </div>
       <div id="statistic-four">
         <div class="card-body">
+          <app-mac-ip></app-mac-ip>
         </div>
       </div>
     </div>
-
-    <div class="card">
-        <div class="card-header">
-          <h2 class="mb-0">DHCP</h2>
-        </div>
-        <div id="statistic-five">
-          <div class="card-body">
-          </div>
-        </div>
-      </div>
 </div>
+
+<app-footer></app-footer>

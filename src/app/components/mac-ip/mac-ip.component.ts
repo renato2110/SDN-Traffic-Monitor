@@ -15,13 +15,13 @@ export class MacIpComponent implements OnInit {
 
     this.data = [
       {
-          "mac": "99:12:aa:01:ff:11",
-          "ip": "192.168.10.1"
-      },  
+        'mac': '99:12:aa:01:ff:11',
+        'ip': '192.168.10.1'
+      },
       {
-          "mac": "10:AB:B5:22:01",
-          "ip": "10.0.0.1"
+        'mac': '10:AB:B5:22:01',
+        'ip': '10.0.0.1'
       }
-    ]
+    ];
   }
 }
