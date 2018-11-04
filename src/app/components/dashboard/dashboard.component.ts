@@ -206,11 +206,12 @@ export class DashboardComponent implements OnInit {
     document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
     document.getElementById('http-1-progress-bar').style.width = this.HTTPBytePercentage1 + '%';
     document.getElementById('http-2-progress-bar').style.width = this.HTTPBytePercentage2 + '%';
+    document.getElementById('other-progress-bar').style.width = this.OTHERBytePercentage + '%';
     this.createPie();
   }
 
   createPie() {
-    const chart = AmCharts.makeChart('chartdiv', {
+    AmCharts.makeChart('chartdiv', {
       'type': 'pie',
       'theme': 'light',
       'dataProvider': [{
