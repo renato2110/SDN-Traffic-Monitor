@@ -9,7 +9,7 @@ import { MacIpComponent } from './components/mac-ip/mac-ip.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PortsComponent } from './components/ports/ports.component';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { PortsComponent } from './components/ports/ports.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     StatisticsService
