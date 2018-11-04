@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fff0a0;
+  background-color: #fff7fb;
+}
+
+tr {
+  text-align: center;
+}
+
+body {
+  background: #FBFBFB;
+}
+
+@media only screen and (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
 }

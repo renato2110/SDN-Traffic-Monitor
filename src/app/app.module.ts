@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MacIpComponent } from './components/mac-ip/mac-ip.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PortsComponent } from './components/ports/ports.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppComponent,
     MacIpComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    PortsComponent
   ],
   imports: [
     BrowserModule,

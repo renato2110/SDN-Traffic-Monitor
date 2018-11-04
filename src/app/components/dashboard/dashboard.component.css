@@ -1,5 +1,5 @@
 h2, h6 {
-  color: #608000;
+  color: #007bff;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -12,7 +12,15 @@ h2, h6 {
 }
 
 #statistics-components {
-  padding-top: 30px;
   width: 97%;
   margin: auto;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+
+.row{
+  margin-top: 70px;
 }
