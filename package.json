@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "amcharts3": "^3.21.14",
+    "amcharts3-angular2": "^1.2.1",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.1.3",
     "core-js": "^2.4.1",

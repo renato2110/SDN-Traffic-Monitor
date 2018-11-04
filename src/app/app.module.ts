@@ -10,6 +10,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PortsComponent } from './components/ports/ports.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AmChartsModule } from "amcharts3-angular2";
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AmChartsModule
   ],
   providers: [
     StatisticsService
