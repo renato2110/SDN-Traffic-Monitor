@@ -8,19 +8,26 @@ import {Component, OnInit} from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   private data;
-  public DNSByteCount = 0;
-  public DNSBytePercentage = 30;
+  public DNSByteCount = 70;
+  public DNSBytePercentage = 25;
   // PORT 80
-  public HTTPByteCount1 = 0;
-  public HTTPBytePercentage1 = 40;
+  public HTTPByteCount1 = 70;
+  public HTTPBytePercentage1 = 25;
   // PORT 8080
-  public HTTPByteCount2 = 0;
-  public HTTPBytePercentage2 = 30;
+  public HTTPByteCount2 = 70;
+  public HTTPBytePercentage2 = 25;
+  // OTHER
+  public OTHERByteCount = 70;
+  public OTHERBytePercentage = 25;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.fillData();
+  }
+
+  fillData() {
     this.data = {
       'OFPFlowStatsReply': {
         'body': [
@@ -199,6 +206,33 @@ export class DashboardComponent implements OnInit {
     document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
     document.getElementById('http-1-progress-bar').style.width = this.HTTPBytePercentage1 + '%';
     document.getElementById('http-2-progress-bar').style.width = this.HTTPBytePercentage2 + '%';
+    this.createPie();
+  }
+
+  createPie() {
+    const chart = AmCharts.makeChart('chartdiv', {
+      'type': 'pie',
+      'theme': 'light',
+      'dataProvider': [{
+        'protocol': 'DNS',
+        'bytes': this.DNSByteCount
+      }, {
+        'protocol': 'HTTP',
+        'bytes': this.HTTPByteCount1 + this.HTTPByteCount2
+      }, {
+        'protocol': 'OTHERS',
+        'bytes': this.OTHERByteCount
+      }],
+      'valueField': 'bytes',
+      'titleField': 'protocol',
+      'outlineAlpha': 0.4,
+      'depth3D': 15,
+      'balloonText': '[[title]]<br><span style=\'font-size:14px\'><b>[[bytes]] bytes</b> ([[percents]]%)</span>',
+      'angle': 30,
+      'export': {
+        'enabled': true
+      }
+    });
   }
 
 }

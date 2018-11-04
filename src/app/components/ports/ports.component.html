@@ -1,0 +1,20 @@
+<div class="container">
+  <table *ngIf="data" class="table">
+    <!-- ADD HEADERS -->
+    <tr>
+      <th>NUMBER</th>
+      <th>R BYTES</th>
+      <th>T BYTES</th>
+      <th>COLLISIONS</th>
+    </tr>
+
+    <!-- BIND ARRAY TO TABLE -->
+    <tr *ngFor="let element of data">
+      <td>{{element.OFPPortStats.port_no}}</td>
+      <td>{{element.OFPPortStats.rx_bytes}}</td>
+      <td>{{element.OFPPortStats.tx_bytes}}</td>
+      <td>{{element.OFPPortStats.collisions}}</td>
+    </tr>
+  </table>
+  <p *ngIf="!data">No available data</p>
+</div>
