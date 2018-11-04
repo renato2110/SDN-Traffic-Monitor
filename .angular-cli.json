@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "../node_modules/amcharts3/amcharts/images"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,9 +22,14 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/amcharts3/amcharts/plugins/export/export.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/amcharts3/amcharts/amcharts.js",
+        "../node_modules/amcharts3/amcharts/xy.js",
+        "../node_modules/amcharts3/amcharts/themes/light.js",
+        "../node_modules/amcharts3/amcharts/plugins/export/export.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

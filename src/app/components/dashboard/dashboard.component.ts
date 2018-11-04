@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { AmChartsService } from "amcharts3-angular2";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
   public OTHERByteCount = 70;
   public OTHERBytePercentage = 25;
 
-  constructor() {
+  constructor(private AmCharts: AmChartsService) {
   }
 
   ngOnInit() {
@@ -211,7 +212,7 @@ export class DashboardComponent implements OnInit {
   }
 
   createPie() {
-    AmCharts.makeChart('chartdiv', {
+    this.AmCharts.makeChart('chartdiv', {
       'type': 'pie',
       'theme': 'light',
       'dataProvider': [{
