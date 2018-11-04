@@ -1,20 +1,6 @@
-h1, h2, h6 {
+h1, h6 {
     color: #608000;
     font-family: 'Times New Roman', Times, serif;
-}
-
-.card-body, h1, h2 {
-    text-align: center;
-}
-
-.card-header {
-    background-color: white;
-}
-
-#statistics-components {
-    padding-top: 30px;
-    width: 97%;
-    margin: auto;
 }
 
 #ryu-logo{
