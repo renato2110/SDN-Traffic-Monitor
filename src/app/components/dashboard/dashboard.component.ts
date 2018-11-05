@@ -70,8 +70,9 @@ export class DashboardComponent implements OnInit {
               body[i].OFPFlowStats.byte_count,
               this.totalBytes);
             this.HTTPTableElements.push(httpTableElement);
-          } else {
-            this.DNSMacSource = match[0].OXMTlv.value;
+          } else if (match[match.length - 1].OXMTlv.field === 'udp_dst'){
+		   alert(this.DNSMacSource = match[2].OXMTlv.value);
+            this.DNSMacSource = match[2].OXMTlv.value;
             this.DNSMacDestination = match[1].OXMTlv.value;
             this.DNSByteCount =  body[i].OFPFlowStats.byte_count;
             this.DNSBytePercentage = 100 * (this.DNSByteCount / this.totalBytes);

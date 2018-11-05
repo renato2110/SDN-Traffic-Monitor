@@ -16,22 +16,15 @@ export class MacIpComponent implements OnInit {
     this.macIpList = [];
   }
 
-  ngOnInit() {/*
+  ngOnInit() {
     this.statisticsService.mactableService().then(response => {
       this.data = response;
-    });*/
-
-
-    this.data = [
-      {
-        '99:12:aa:01:ff:11': '1',
-        '10:AB:B5:22:01:92': '2'
-      }
-    ];
-
     for (var key in this.data[0]) {
       const macIp = new MacIp(key, this.data[0][key]);
       this.macIpList.push(macIp);
     }
+  console.log(this.data);
+    });
   }
+  
 }
