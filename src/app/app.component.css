@@ -1,6 +1,11 @@
-h1, h6 {
-    color: black;
+h1 {
+    color: #8edc78;
     font-family: 'Times New Roman', Times, serif;
+}
+
+h6 {
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 #ryu-logo{
