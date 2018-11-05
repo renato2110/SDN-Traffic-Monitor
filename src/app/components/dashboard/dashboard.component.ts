@@ -30,451 +30,29 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fillData();
+  this.statisticsService.generalService().then(response => {
+	  this.data = response;
+	  console.log(this.data);
+	  this.fillData();
+    });
   }
 
   fillData() {
-    this.data = {
-      'OFPFlowStatsReply': {
-        'body': [
-          {
-            'OFPFlowStats': {
-              'byte_count': 3214,
-              'cookie': 0,
-              'duration_nsec': 2000000,
-              'duration_sec': 23,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 2,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 104,
-              'match': {
-                'OFPMatch': {
-                  'length': 32,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 1
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:01'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 12,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 42,
-              'cookie': 0,
-              'duration_nsec': 748000000,
-              'duration_sec': 17,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 1,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 104,
-              'match': {
-                'OFPMatch': {
-                  'length': 32,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 2
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:01'
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 1,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 3106,
-              'cookie': 0,
-              'duration_nsec': 413000000,
-              'duration_sec': 3,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 2,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 104,
-              'match': {
-                'OFPMatch': {
-                  'length': 32,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 3
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:03'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 10,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 803,
-              'cookie': 0,
-              'duration_nsec': 1000000,
-              'duration_sec': 23,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 1,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 144,
-              'match': {
-                'OFPMatch': {
-                  'length': 65,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 2
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:01'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_type',
-                        'mask': null,
-                        'value': 2048
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ipv4_src',
-                        'mask': null,
-                        'value': '10.0.0.2'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ipv4_dst',
-                        'mask': null,
-                        'value': '10.0.0.1'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ip_proto',
-                        'mask': null,
-                        'value': 6
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'tcp_dst',
-                        'mask': null,
-                        'value': 80
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 10,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 737,
-              'cookie': 0,
-              'duration_nsec': 411000000,
-              'duration_sec': 3,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 3,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 144,
-              'match': {
-                'OFPMatch': {
-                  'length': 65,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 2
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:03'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_type',
-                        'mask': null,
-                        'value': 2048
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ipv4_src',
-                        'mask': null,
-                        'value': '10.0.0.2'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ipv4_dst',
-                        'mask': null,
-                        'value': '10.0.0.3'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'ip_proto',
-                        'mask': null,
-                        'value': 6
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'tcp_dst',
-                        'mask': null,
-                        'value': 80
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 9,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 2116,
-              'cookie': 0,
-              'duration_nsec': 373000000,
-              'duration_sec': 26,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65535,
-                          'port': 4294967293,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 80,
-              'match': {
-                'OFPMatch': {
-                  'length': 4,
-                  'oxm_fields': [],
-                  'type': 1
-                }
-              },
-              'packet_count': 28,
-              'priority': 0,
-              'table_id': 0
-            }
-          }
-        ],
-        'flags': 0,
-        'type': 1
-      }
-    };
-    // this.data = JSON.stringify(json);
     const body = this.data.OFPFlowStatsReply.body;
-    console.log(this.data);
 
-    for (let i = 0; i < body.length - 1; i++) {
-      this.totalBytes += body[i].OFPFlowStats.byte_count;
+    for (let i = 0; i < body.length; i++) {
+      if (body[i].OFPFlowStats.priority !== 2) {
+	     if (3 <= body[i].OFPFlowStats.match.OFPMatch.oxm_fields.length) {
+      		this.totalBytes += body[i].OFPFlowStats.byte_count;
+	  	 }
+	  }
     }
 
-    for (let i = 0; i < (body.length - 1); i++) {
+    for (let i = 0; i < (body.length); i++) {
       if (body[i].OFPFlowStats.priority !== 2) {
         const match = body[i].OFPFlowStats.match.OFPMatch.oxm_fields;
         // PING OR OTHERS PROTOCOLS
-        if (3 >= match.length) {
+        if (3 === match.length) {
           this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
           const otherTableElement = new OthertableElement(
             match[0].OXMTlv.value,
@@ -483,12 +61,12 @@ export class DashboardComponent implements OnInit {
             body[i].OFPFlowStats.byte_count,
             this.totalBytes);
           this.OTHERTableElements.push(otherTableElement);
-        } else {
+        } else if (3 < match.length){
           if (match[match.length - 1].OXMTlv.field === 'tcp_dst') {
             this.HTTPByteCount += body[i].OFPFlowStats.byte_count;
             const httpTableElement = new HttptableElement(
-              match[5].OXMTlv.value,
-              match[4].OXMTlv.value,
+              match[match.length - 2].OXMTlv.value,
+              match[match.length - 3].OXMTlv.value,
               body[i].OFPFlowStats.byte_count,
               this.totalBytes);
             this.HTTPTableElements.push(httpTableElement);
@@ -502,8 +80,6 @@ export class DashboardComponent implements OnInit {
         }
       }
     }
-    console.log(this.HTTPTableElements);
-    console.log(this.OTHERTableElements);
     this.fillPercentage();
     this.createPie();
   }

@@ -4,10 +4,10 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class StatisticsService {
 
-  private getGeneralServiceURL = 'localhost:8080/flows';
-  private getPortsServiceURL = 'localhost:8080/ports';
-  private getMactableServiceURL = 'localhost:8080/mactable/0000000000000001';
-  private getHttpServiceURL = 'localhost:8080/web';
+  private getGeneralServiceURL = 'http://localhost:8080/flows';
+  private getPortsServiceURL = 'http://localhost:8080/ports';
+  private getMactableServiceURL = 'http://localhost:8080/mactable/00006f7065727300';
+  private getHttpServiceURL = 'http://localhost:8080/web';
 
   constructor(private http: HttpClient) {
   }

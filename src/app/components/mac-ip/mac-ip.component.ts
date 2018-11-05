@@ -8,25 +8,14 @@ import {StatisticsService} from '../../services/statistics.service';
 })
 export class MacIpComponent implements OnInit {
 
-  private data;
+  public data;
 
   constructor(private statisticsService: StatisticsService) {
   }
 
-  ngOnInit() {
-    /*this.statisticsService.mactableService().then(response => {
+  ngOnInit() {/*
+    this.statisticsService.mactableService().then(response => {
       this.data = response;
     });*/
-
-    this.data = [
-      {
-        'mac': '99:12:aa:01:ff:11',
-        'port': '2'
-      },
-      {
-        'mac': '10:AB:B5:22:01',
-        'port': '1'
-      }
-    ];
   }
 }
