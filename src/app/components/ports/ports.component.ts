@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {StatisticsService} from '../../services/statistics.service';
 
 @Component({
   selector: 'app-ports',
@@ -9,10 +10,14 @@ export class PortsComponent implements OnInit {
 
   public data;
 
-  constructor() {
+  constructor(private statisticsService: StatisticsService) {
   }
 
   ngOnInit() {
+
+    this.statisticsService.portsService().then(response => {
+      // this.data = response;
+    });
 
     const json = {
       'OFPPortStatsReply': {

@@ -30,14 +30,14 @@
           <table class="table">
             <!-- ADD HEADERS -->
             <tr>
-              <th>PORT</th>
-              <th>PROTOCOL</th>
+              <th>SOURCE</th>
+              <th>DESTINATION</th>
               <th>BYTE COUNT</th>
               <th>PERCENTAGE</th>
             </tr>
             <tr>
-              <td>53</td>
-              <td>UDP</td>
+              <td>{{DNSMacSource}}</td>
+              <td>{{DNSMacDestination}}</td>
               <td>{{ DNSByteCount }}</td>
               <td>
                 <div class="container">
@@ -106,17 +106,17 @@
           <table class="table">
             <!-- ADD HEADERS -->
             <tr>
-              <th>IN PORT</th>
               <th>SOURCE</th>
               <th>DESTINATION</th>
               <th>BYTE COUNT</th>
+              <th>IN PORT</th>
               <th>PERCENTAGE</th>
             </tr>
             <tr *ngFor="let element of OTHERTableElements">
-              <td>{{element.inPort}}</td>
               <td>{{element.macSource}}</td>
               <td>{{element.macDestination}}</td>
               <td>{{element.bytes}}</td>
+              <td>{{element.inPort}}</td>
               <td>
                 <div class="container">
                   <div class="progress">

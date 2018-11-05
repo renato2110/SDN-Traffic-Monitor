@@ -12,12 +12,13 @@ import {StatisticsService} from '../../services/statistics.service';
 export class DashboardComponent implements OnInit {
 
   private data;
+  public DNSMacSource = 0;
+  public DNSMacDestination = 0;
   public DNSByteCount = 0;
   public DNSBytePercentage = 0;
   public HTTPByteCount = 0;
   // OTHER
   public OTHERByteCount = 0;
-  public OTHERBytePercentage = 0;
   public totalBytes = 0;
 
   public HTTPTableElements: Array<HttptableElement>;
@@ -491,6 +492,12 @@ export class DashboardComponent implements OnInit {
               body[i].OFPFlowStats.byte_count,
               this.totalBytes);
             this.HTTPTableElements.push(httpTableElement);
+          } else {
+            this.DNSMacSource = match[0].OXMTlv.value;
+            this.DNSMacDestination = match[1].OXMTlv.value;
+            this.DNSByteCount =  body[i].OFPFlowStats.byte_count;
+            this.DNSBytePercentage = 100 * (this.DNSByteCount / this.totalBytes);
+            this.DNSBytePercentage = Math.round(this.DNSBytePercentage * 100) / 100;
           }
         }
       }
@@ -502,10 +509,6 @@ export class DashboardComponent implements OnInit {
   }
 
   fillPercentage() {
-    if (this.OTHERByteCount > 0) {
-      this.OTHERBytePercentage = 100 * (this.OTHERByteCount / this.totalBytes);
-      this.OTHERBytePercentage = Math.round(this.OTHERBytePercentage * 100) / 100;
-    }
     document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
   }
 
