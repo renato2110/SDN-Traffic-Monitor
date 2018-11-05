@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { AmChartsService } from "amcharts3-angular2";
+import {AmChartsService} from 'amcharts3-angular2';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,17 +9,15 @@ import { AmChartsService } from "amcharts3-angular2";
 export class DashboardComponent implements OnInit {
 
   private data;
-  public DNSByteCount = 70;
-  public DNSBytePercentage = 25;
-  // PORT 80
-  public HTTPByteCount1 = 70;
-  public HTTPBytePercentage1 = 25;
-  // PORT 8080
-  public HTTPByteCount2 = 70;
-  public HTTPBytePercentage2 = 25;
+  public DNSByteCount = 0;
+  public DNSBytePercentage = 0;
+  public HTTPByteCount = 0;
+  public HTTPBytePercentage = 0;
   // OTHER
-  public OTHERByteCount = 70;
-  public OTHERBytePercentage = 25;
+  public OTHERByteCount = 0;
+  public OTHERBytePercentage = 0;
+
+  public totalBytes = 0;
 
   constructor(private AmCharts: AmChartsService) {
   }
@@ -34,72 +32,10 @@ export class DashboardComponent implements OnInit {
         'body': [
           {
             'OFPFlowStats': {
-              'byte_count': 5320,
+              'byte_count': 3214,
               'cookie': 0,
-              'duration_nsec': 611000000,
-              'duration_sec': 53,
-              'flags': 0,
-              'hard_timeout': 0,
-              'idle_timeout': 0,
-              'instructions': [
-                {
-                  'OFPInstructionActions': {
-                    'actions': [
-                      {
-                        'OFPActionOutput': {
-                          'len': 16,
-                          'max_len': 65509,
-                          'port': 1,
-                          'type': 0
-                        }
-                      }
-                    ],
-                    'len': 24,
-                    'type': 4
-                  }
-                }
-              ],
-              'length': 104,
-              'match': {
-                'OFPMatch': {
-                  'length': 32,
-                  'oxm_fields': [
-                    {
-                      'OXMTlv': {
-                        'field': 'in_port',
-                        'mask': null,
-                        'value': 2
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_src',
-                        'mask': null,
-                        'value': '00:00:00:00:00:02'
-                      }
-                    },
-                    {
-                      'OXMTlv': {
-                        'field': 'eth_dst',
-                        'mask': null,
-                        'value': '00:00:00:00:00:01'
-                      }
-                    }
-                  ],
-                  'type': 1
-                }
-              },
-              'packet_count': 56,
-              'priority': 1,
-              'table_id': 0
-            }
-          },
-          {
-            'OFPFlowStats': {
-              'byte_count': 5278,
-              'cookie': 0,
-              'duration_nsec': 607000000,
-              'duration_sec': 53,
+              'duration_nsec': 2000000,
+              'duration_sec': 23,
               'flags': 0,
               'hard_timeout': 0,
               'idle_timeout': 0,
@@ -151,17 +87,335 @@ export class DashboardComponent implements OnInit {
                   'type': 1
                 }
               },
-              'packet_count': 55,
+              'packet_count': 12,
               'priority': 1,
               'table_id': 0
             }
           },
           {
             'OFPFlowStats': {
-              'byte_count': 1968,
+              'byte_count': 42,
               'cookie': 0,
-              'duration_nsec': 790000000,
+              'duration_nsec': 748000000,
+              'duration_sec': 17,
+              'flags': 0,
+              'hard_timeout': 0,
+              'idle_timeout': 0,
+              'instructions': [
+                {
+                  'OFPInstructionActions': {
+                    'actions': [
+                      {
+                        'OFPActionOutput': {
+                          'len': 16,
+                          'max_len': 65509,
+                          'port': 1,
+                          'type': 0
+                        }
+                      }
+                    ],
+                    'len': 24,
+                    'type': 4
+                  }
+                }
+              ],
+              'length': 104,
+              'match': {
+                'OFPMatch': {
+                  'length': 32,
+                  'oxm_fields': [
+                    {
+                      'OXMTlv': {
+                        'field': 'in_port',
+                        'mask': null,
+                        'value': 2
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_src',
+                        'mask': null,
+                        'value': '00:00:00:00:00:02'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_dst',
+                        'mask': null,
+                        'value': '00:00:00:00:00:01'
+                      }
+                    }
+                  ],
+                  'type': 1
+                }
+              },
+              'packet_count': 1,
+              'priority': 1,
+              'table_id': 0
+            }
+          },
+          {
+            'OFPFlowStats': {
+              'byte_count': 3106,
+              'cookie': 0,
+              'duration_nsec': 413000000,
               'duration_sec': 3,
+              'flags': 0,
+              'hard_timeout': 0,
+              'idle_timeout': 0,
+              'instructions': [
+                {
+                  'OFPInstructionActions': {
+                    'actions': [
+                      {
+                        'OFPActionOutput': {
+                          'len': 16,
+                          'max_len': 65509,
+                          'port': 2,
+                          'type': 0
+                        }
+                      }
+                    ],
+                    'len': 24,
+                    'type': 4
+                  }
+                }
+              ],
+              'length': 104,
+              'match': {
+                'OFPMatch': {
+                  'length': 32,
+                  'oxm_fields': [
+                    {
+                      'OXMTlv': {
+                        'field': 'in_port',
+                        'mask': null,
+                        'value': 3
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_src',
+                        'mask': null,
+                        'value': '00:00:00:00:00:03'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_dst',
+                        'mask': null,
+                        'value': '00:00:00:00:00:02'
+                      }
+                    }
+                  ],
+                  'type': 1
+                }
+              },
+              'packet_count': 10,
+              'priority': 1,
+              'table_id': 0
+            }
+          },
+          {
+            'OFPFlowStats': {
+              'byte_count': 803,
+              'cookie': 0,
+              'duration_nsec': 1000000,
+              'duration_sec': 23,
+              'flags': 0,
+              'hard_timeout': 0,
+              'idle_timeout': 0,
+              'instructions': [
+                {
+                  'OFPInstructionActions': {
+                    'actions': [
+                      {
+                        'OFPActionOutput': {
+                          'len': 16,
+                          'max_len': 65509,
+                          'port': 1,
+                          'type': 0
+                        }
+                      }
+                    ],
+                    'len': 24,
+                    'type': 4
+                  }
+                }
+              ],
+              'length': 144,
+              'match': {
+                'OFPMatch': {
+                  'length': 65,
+                  'oxm_fields': [
+                    {
+                      'OXMTlv': {
+                        'field': 'in_port',
+                        'mask': null,
+                        'value': 2
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_src',
+                        'mask': null,
+                        'value': '00:00:00:00:00:02'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_dst',
+                        'mask': null,
+                        'value': '00:00:00:00:00:01'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_type',
+                        'mask': null,
+                        'value': 2048
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ipv4_src',
+                        'mask': null,
+                        'value': '10.0.0.2'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ipv4_dst',
+                        'mask': null,
+                        'value': '10.0.0.1'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ip_proto',
+                        'mask': null,
+                        'value': 6
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'tcp_dst',
+                        'mask': null,
+                        'value': 80
+                      }
+                    }
+                  ],
+                  'type': 1
+                }
+              },
+              'packet_count': 10,
+              'priority': 1,
+              'table_id': 0
+            }
+          },
+          {
+            'OFPFlowStats': {
+              'byte_count': 737,
+              'cookie': 0,
+              'duration_nsec': 411000000,
+              'duration_sec': 3,
+              'flags': 0,
+              'hard_timeout': 0,
+              'idle_timeout': 0,
+              'instructions': [
+                {
+                  'OFPInstructionActions': {
+                    'actions': [
+                      {
+                        'OFPActionOutput': {
+                          'len': 16,
+                          'max_len': 65509,
+                          'port': 3,
+                          'type': 0
+                        }
+                      }
+                    ],
+                    'len': 24,
+                    'type': 4
+                  }
+                }
+              ],
+              'length': 144,
+              'match': {
+                'OFPMatch': {
+                  'length': 65,
+                  'oxm_fields': [
+                    {
+                      'OXMTlv': {
+                        'field': 'in_port',
+                        'mask': null,
+                        'value': 2
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_src',
+                        'mask': null,
+                        'value': '00:00:00:00:00:02'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_dst',
+                        'mask': null,
+                        'value': '00:00:00:00:00:03'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'eth_type',
+                        'mask': null,
+                        'value': 2048
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ipv4_src',
+                        'mask': null,
+                        'value': '10.0.0.2'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ipv4_dst',
+                        'mask': null,
+                        'value': '10.0.0.3'
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'ip_proto',
+                        'mask': null,
+                        'value': 6
+                      }
+                    },
+                    {
+                      'OXMTlv': {
+                        'field': 'tcp_dst',
+                        'mask': null,
+                        'value': 80
+                      }
+                    }
+                  ],
+                  'type': 1
+                }
+              },
+              'packet_count': 9,
+              'priority': 1,
+              'table_id': 0
+            }
+          },
+          {
+            'OFPFlowStats': {
+              'byte_count': 2116,
+              'cookie': 0,
+              'duration_nsec': 373000000,
+              'duration_sec': 26,
               'flags': 0,
               'hard_timeout': 0,
               'idle_timeout': 0,
@@ -191,7 +445,7 @@ export class DashboardComponent implements OnInit {
                   'type': 1
                 }
               },
-              'packet_count': 26,
+              'packet_count': 28,
               'priority': 0,
               'table_id': 0
             }
@@ -202,13 +456,32 @@ export class DashboardComponent implements OnInit {
       }
     };
     // this.data = JSON.stringify(json);
+    const body = this.data.OFPFlowStatsReply.body;
     console.log(this.data);
 
-    document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
-    document.getElementById('http-1-progress-bar').style.width = this.HTTPBytePercentage1 + '%';
-    document.getElementById('http-2-progress-bar').style.width = this.HTTPBytePercentage2 + '%';
-    document.getElementById('other-progress-bar').style.width = this.OTHERBytePercentage + '%';
+    for (let i = 0; i < (body.length - 1); i++) {
+      this.totalBytes += body[i].OFPFlowStats.byte_count;
+      const match = body[i].OFPFlowStats.match.OFPMatch.oxm_fields;
+      // PING OR OTHERS PROTOCOLS
+      if (3 >= match.length) {
+        this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
+      }
+      /*for (let j = 0; j < match.length; j++) {
+        alert('Resto');
+      }*/
+    }
+    this.fillPercentage();
     this.createPie();
+  }
+
+  fillPercentage() {
+    if (this.OTHERByteCount > 0) {
+      this.OTHERBytePercentage = 100 * (this.OTHERByteCount / this.totalBytes);
+      this.OTHERBytePercentage = Math.floor(this.OTHERBytePercentage);
+    }
+    document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
+    document.getElementById('http-progress-bar').style.width = this.HTTPBytePercentage + '%';
+    document.getElementById('other-progress-bar').style.width = this.OTHERBytePercentage + '%';
   }
 
   createPie() {
@@ -220,7 +493,7 @@ export class DashboardComponent implements OnInit {
         'bytes': this.DNSByteCount
       }, {
         'protocol': 'HTTP',
-        'bytes': this.HTTPByteCount1 + this.HTTPByteCount2
+        'bytes': this.HTTPByteCount
       }, {
         'protocol': 'OTHERS',
         'bytes': this.OTHERByteCount
