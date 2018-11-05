@@ -460,15 +460,18 @@ export class DashboardComponent implements OnInit {
     console.log(this.data);
 
     for (let i = 0; i < (body.length - 1); i++) {
-      this.totalBytes += body[i].OFPFlowStats.byte_count;
-      const match = body[i].OFPFlowStats.match.OFPMatch.oxm_fields;
-      // PING OR OTHERS PROTOCOLS
-      if (3 >= match.length) {
-        this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
+      if (body[i].OFPFlowStats.priority !== 2) {
+        this.totalBytes += body[i].OFPFlowStats.byte_count;
+        const match = body[i].OFPFlowStats.match.OFPMatch.oxm_fields;
+        // PING OR OTHERS PROTOCOLS
+        if (3 >= match.length) {
+          this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
+        } else {
+          if (match[match.length - 1].OXMTlv.field === 'tcp_dst') {
+            alert('HTTP');
+          }
+        }
       }
-      /*for (let j = 0; j < match.length; j++) {
-        alert('Resto');
-      }*/
     }
     this.fillPercentage();
     this.createPie();
