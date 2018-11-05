@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AmChartsService} from 'amcharts3-angular2';
 import {HttptableElement} from '../../model/httptable-element';
+import {OthertableElement} from '../../model/othertable-element';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,16 +14,17 @@ export class DashboardComponent implements OnInit {
   public DNSByteCount = 0;
   public DNSBytePercentage = 0;
   public HTTPByteCount = 0;
-  public HTTPBytePercentage = 0;
   // OTHER
   public OTHERByteCount = 0;
   public OTHERBytePercentage = 0;
   public totalBytes = 0;
 
   public HTTPTableElements: Array<HttptableElement>;
+  public OTHERTableElements: Array<OthertableElement>;
 
   constructor(private AmCharts: AmChartsService) {
     this.HTTPTableElements = [];
+    this.OTHERTableElements = [];
   }
 
   ngOnInit() {
@@ -462,13 +464,23 @@ export class DashboardComponent implements OnInit {
     const body = this.data.OFPFlowStatsReply.body;
     console.log(this.data);
 
+    for (let i = 0; i < body.length - 1; i++) {
+      this.totalBytes += body[i].OFPFlowStats.byte_count;
+    }
+
     for (let i = 0; i < (body.length - 1); i++) {
       if (body[i].OFPFlowStats.priority !== 2) {
-        this.totalBytes += body[i].OFPFlowStats.byte_count;
         const match = body[i].OFPFlowStats.match.OFPMatch.oxm_fields;
         // PING OR OTHERS PROTOCOLS
         if (3 >= match.length) {
           this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
+          const otherTableElement = new OthertableElement(
+            match[0].OXMTlv.value,
+            match[2].OXMTlv.value,
+            match[1].OXMTlv.value,
+            body[i].OFPFlowStats.byte_count,
+            this.totalBytes);
+          this.OTHERTableElements.push(otherTableElement);
         } else {
           if (match[match.length - 1].OXMTlv.field === 'tcp_dst') {
             this.HTTPByteCount += body[i].OFPFlowStats.byte_count;
@@ -483,6 +495,7 @@ export class DashboardComponent implements OnInit {
       }
     }
     console.log(this.HTTPTableElements);
+    console.log(this.OTHERTableElements);
     this.fillPercentage();
     this.createPie();
   }
@@ -493,7 +506,6 @@ export class DashboardComponent implements OnInit {
       this.OTHERBytePercentage = Math.round(this.OTHERBytePercentage * 100) / 100;
     }
     document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
-    document.getElementById('other-progress-bar').style.width = this.OTHERBytePercentage + '%';
   }
 
   createPie() {
