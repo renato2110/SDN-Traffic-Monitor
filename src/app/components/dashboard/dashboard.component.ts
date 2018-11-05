@@ -3,6 +3,7 @@ import {AmChartsService} from 'amcharts3-angular2';
 import {HttptableElement} from '../../model/httptable-element';
 import {OthertableElement} from '../../model/othertable-element';
 import {StatisticsService} from '../../services/statistics.service';
+import {DnstableElement} from '../../model/dnstable-element';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   public HTTPTableElements: Array<HttptableElement>;
   public OTHERTableElements: Array<OthertableElement>;
+  public DNSTableElements: Array<DnstableElement>;
 
   constructor(private AmCharts: AmChartsService, private statisticsService: StatisticsService) {
     this.HTTPTableElements = [];
@@ -30,10 +32,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.statisticsService.generalService().then(response => {
-	  this.data = response;
-	  console.log(this.data);
-	  this.fillData();
+    this.statisticsService.generalService().then(response => {
+      this.data = response;
+      console.log(this.data);
+      this.fillData();
     });
   }
 
@@ -42,10 +44,10 @@ export class DashboardComponent implements OnInit {
 
     for (let i = 0; i < body.length; i++) {
       if (body[i].OFPFlowStats.priority !== 2) {
-	     if (3 <= body[i].OFPFlowStats.match.OFPMatch.oxm_fields.length) {
-      		this.totalBytes += body[i].OFPFlowStats.byte_count;
-	  	 }
-	  }
+        if (3 <= body[i].OFPFlowStats.match.OFPMatch.oxm_fields.length) {
+          this.totalBytes += body[i].OFPFlowStats.byte_count;
+        }
+      }
     }
 
     for (let i = 0; i < (body.length); i++) {
@@ -61,7 +63,7 @@ export class DashboardComponent implements OnInit {
             body[i].OFPFlowStats.byte_count,
             this.totalBytes);
           this.OTHERTableElements.push(otherTableElement);
-        } else if (3 < match.length){
+        } else if (3 < match.length) {
           if (match[match.length - 1].OXMTlv.field === 'tcp_dst') {
             this.HTTPByteCount += body[i].OFPFlowStats.byte_count;
             const httpTableElement = new HttptableElement(
@@ -70,13 +72,15 @@ export class DashboardComponent implements OnInit {
               body[i].OFPFlowStats.byte_count,
               this.totalBytes);
             this.HTTPTableElements.push(httpTableElement);
-          } else if (match[match.length - 1].OXMTlv.field === 'udp_dst'){
-		   alert(this.DNSMacSource = match[2].OXMTlv.value);
-            this.DNSMacSource = match[2].OXMTlv.value;
-            this.DNSMacDestination = match[1].OXMTlv.value;
-            this.DNSByteCount =  body[i].OFPFlowStats.byte_count;
-            this.DNSBytePercentage = 100 * (this.DNSByteCount / this.totalBytes);
-            this.DNSBytePercentage = Math.round(this.DNSBytePercentage * 100) / 100;
+          } else if (match[match.length - 1].OXMTlv.field === 'udp_dst') {
+            this.DNSByteCount += body[i].OFPFlowStats.byte_count;
+            const dnsTableElement = new DnstableElement(
+              match[2].OXMTlv.value,
+              match[5].OXMTlv.value,
+              body[i].OFPFlowStats.byte_count,
+              this.totalBytes
+            );
+            this.DNSTableElements.push(dnsTableElement);
           }
         }
       }

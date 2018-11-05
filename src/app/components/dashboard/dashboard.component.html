@@ -35,16 +35,16 @@
               <th>BYTE COUNT</th>
               <th>PERCENTAGE</th>
             </tr>
-            <tr>
-              <td>{{DNSMacSource}}</td>
-              <td>{{DNSMacDestination}}</td>
-              <td>{{ DNSByteCount }}</td>
+            <tr *ngFor="let element of DNSTableElements">
+              <td>{{element.ipSource}}</td>
+              <td>{{element.ipDestination}}</td>
+              <td>{{element.bytes}}</td>
               <td>
                 <div class="container">
                   <div class="progress">
                     <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar"
-                         aria-valuenow="70" aria-valuemin="0"
-                         aria-valuemax="100" id="dns-progress-bar"> {{DNSBytePercentage}}%
+                         aria-valuenow="70" aria-valuemin="0" [style.width]="element.percentage+'%'"
+                         aria-valuemax="100"> {{element.percentage}}%
                     </div>
                   </div>
                 </div>
