@@ -1,6 +1,11 @@
 h2, h6 {
-  color: #007bff;
   font-family: 'Times New Roman', Times, serif;
+}
+
+
+.card{
+  margin: 50px 5%;
+  background-color: #FFFFFF;
 }
 
 .card-body, h1, h2 {
@@ -8,7 +13,8 @@ h2, h6 {
 }
 
 .card-header {
-  background-color: white;
+  background-color: #CCC9;
+  color: #000;
 }
 
 #statistics-components {
@@ -27,4 +33,37 @@ h2, h6 {
 
 button{
   height: 36px;
+}
+
+
+.first-page{
+  margin: 30px 5% 50px 5%;
+}
+
+hr{
+  margin: 50px 5%;
+}
+
+.intro-div{
+  width: 100%;
+  height: auto;
+  display: block;
+  text-align: center;
+  margin: 70px auto 20px auto;
+}
+
+.intro-text{
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.new-page{
+  margin-bottom: 100px;
+}
+
+.amcharts-chart-div:nth-child(2){
+  display: none !important;
 }

@@ -5,10 +5,13 @@
 
 tr {
   text-align: center;
+  border-top: 1px solid #CCC9 !important;
+  border-bottom: 1px solid #CCC9 !important;
+
 }
 
 body {
-  background: #FDFDFD;
+  background: #fff;
 }
 
 @media only screen and (max-width: 600px) {
