@@ -7,3 +7,11 @@
   margin-top: 30px;
   width: auto;
 }
+
+p {
+  margin: 0px;
+  padding: 7px;
+}
+footer{
+  background-color: #CCC9;
+}
