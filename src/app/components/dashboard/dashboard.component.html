@@ -66,24 +66,28 @@
           <table class="table">
             <!-- ADD HEADERS -->
             <tr>
-              <th>PORTS</th>
-              <th>PROTOCOL</th>
+              <th>SOURCE</th>
+              <th>DESTINATION</th>
               <th>BYTE COUNT</th>
               <th>PERCENTAGE</th>
+              <th>ACTION</th>
             </tr>
-            <tr>
-              <td>80</td>
-              <td>TCP</td>
-              <td>{{ HTTPByteCount }}</td>
-              <td>
+            <tr *ngFor="let element of HTTPTableElements">
+              <td *ngIf="element.active">{{element.ipSource}}</td>
+              <td *ngIf="element.active">{{element.ipDestination}}</td>
+              <td *ngIf="element.active">{{element.bytes}}</td>
+              <td *ngIf="element.active">
                 <div class="container">
                   <div class="progress">
                     <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar"
-                         aria-valuenow="70" aria-valuemin="0"
-                         aria-valuemax="100" id="http-progress-bar"> {{HTTPBytePercentage}}%
+                         aria-valuenow="70" aria-valuemin="0" [style.width]="element.percentage+'%'"
+                         aria-valuemax="100" id="http-progress-bar"> {{element.percentage}}%
                     </div>
                   </div>
                 </div>
+              </td>
+              <td *ngIf="element.active">
+                <button type="button" class="btn btn-danger" data-toggle="confirmation" (click)="block(element)">Block</button>
               </td>
             </tr>
           </table>

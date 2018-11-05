@@ -24,3 +24,7 @@ h2, h6 {
 .row{
   margin-top: 70px;
 }
+
+button{
+  height: 36px;
+}

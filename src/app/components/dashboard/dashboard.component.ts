@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AmChartsService} from 'amcharts3-angular2';
+import {HttptableElement} from '../../model/httptable-element';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +17,12 @@ export class DashboardComponent implements OnInit {
   // OTHER
   public OTHERByteCount = 0;
   public OTHERBytePercentage = 0;
-
   public totalBytes = 0;
 
+  public HTTPTableElements: Array<HttptableElement>;
+
   constructor(private AmCharts: AmChartsService) {
+    this.HTTPTableElements = [];
   }
 
   ngOnInit() {
@@ -468,11 +471,18 @@ export class DashboardComponent implements OnInit {
           this.OTHERByteCount += body[i].OFPFlowStats.byte_count;
         } else {
           if (match[match.length - 1].OXMTlv.field === 'tcp_dst') {
-            alert('HTTP');
+            this.HTTPByteCount += body[i].OFPFlowStats.byte_count;
+            const httpTableElement = new HttptableElement(
+              match[5].OXMTlv.value,
+              match[4].OXMTlv.value,
+              body[i].OFPFlowStats.byte_count,
+              this.totalBytes);
+            this.HTTPTableElements.push(httpTableElement);
           }
         }
       }
     }
+    console.log(this.HTTPTableElements);
     this.fillPercentage();
     this.createPie();
   }
@@ -480,10 +490,9 @@ export class DashboardComponent implements OnInit {
   fillPercentage() {
     if (this.OTHERByteCount > 0) {
       this.OTHERBytePercentage = 100 * (this.OTHERByteCount / this.totalBytes);
-      this.OTHERBytePercentage = Math.floor(this.OTHERBytePercentage);
+      this.OTHERBytePercentage = Math.round(this.OTHERBytePercentage * 100) / 100;
     }
     document.getElementById('dns-progress-bar').style.width = this.DNSBytePercentage + '%';
-    document.getElementById('http-progress-bar').style.width = this.HTTPBytePercentage + '%';
     document.getElementById('other-progress-bar').style.width = this.OTHERBytePercentage + '%';
   }
 
@@ -513,4 +522,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  block(httpTableElement: HttptableElement) {
+    const response = confirm('Do yo want to block the traffic from '
+      + httpTableElement.ipSource + ' to ' + httpTableElement.ipDestination + '?');
+    if (response === true) {
+      httpTableElement.changeState();
+    }
+  }
 }
