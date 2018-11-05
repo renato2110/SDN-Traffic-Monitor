@@ -31,16 +31,4 @@ export class StatisticsService {
         'ipv4_dst' : destination
       }}).toPromise();
   }
-
-  private extractData(res: Response) {
-    return res || {};
-  }
-
-  private extractUserData(res: Response) {
-    return res.json() || {};
-  }
-
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
-  }
 }
