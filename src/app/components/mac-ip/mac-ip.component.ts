@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StatisticsService} from '../../services/statistics.service';
 
 @Component({
   selector: 'app-mac-ip',
@@ -9,9 +10,13 @@ export class MacIpComponent implements OnInit {
 
   private data;
 
-  constructor() { }
+  constructor(private statisticsService: StatisticsService) {
+  }
 
   ngOnInit() {
+    /*this.statisticsService.mactableService().then(response => {
+      this.data = response;
+    });*/
 
     this.data = [
       {

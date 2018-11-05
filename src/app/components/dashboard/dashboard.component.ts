@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AmChartsService} from 'amcharts3-angular2';
 import {HttptableElement} from '../../model/httptable-element';
 import {OthertableElement} from '../../model/othertable-element';
+import {StatisticsService} from '../../services/statistics.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
   public HTTPTableElements: Array<HttptableElement>;
   public OTHERTableElements: Array<OthertableElement>;
 
-  constructor(private AmCharts: AmChartsService) {
+  constructor(private AmCharts: AmChartsService, private statisticsService: StatisticsService) {
     this.HTTPTableElements = [];
     this.OTHERTableElements = [];
   }
@@ -539,6 +540,11 @@ export class DashboardComponent implements OnInit {
       + httpTableElement.ipSource + ' to ' + httpTableElement.ipDestination + '?');
     if (response === true) {
       httpTableElement.changeState();
+      /*this.statisticsService.httpService(httpTableElement.ipSource, httpTableElement.ipDestination).then(
+        response => {
+          alert('Success');
+        }
+      );*/
     }
   }
 }
