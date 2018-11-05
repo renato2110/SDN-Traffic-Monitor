@@ -11,12 +11,6 @@ h1, h6 {
   margin-top: 50px;
 }
 
-
-
 h6{
   margin-bottom: 50px;
-}
-
-.amcharts-chart-div:nth-child(2){
-  display: none !important;
 }
